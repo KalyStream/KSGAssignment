@@ -76,7 +76,7 @@ class WebSocketHelper {
             case .connecting:
                 self?.showToast(message: "Connecting...", type: .processing)
             case .connected:
-                self?.showToast(message: "Socket onnected.", type: .success)
+                self?.showToast(message: "Socket connected.", type: .success)
             case .disconnected:
                 self?.showToast(message: "Socket disconnected.", type: .error)
             case .notConnected:
