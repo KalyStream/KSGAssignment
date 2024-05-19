@@ -8,6 +8,7 @@
 import Foundation
 import SocketIO
 import UIKit
+import Toast
 
 protocol WebSocketHelperDelegate: AnyObject {
     func didReceiveEvent(data: [ItemViewModel])
@@ -63,13 +64,26 @@ class WebSocketHelper {
             print("Socket disconnected")
         }
 
-        socket?.on(clientEvent: .error) { data, ack in
+        socket?.on(clientEvent: .error) { [weak self] data, ack in
             print("Socket error: \(data)")
-            self.retryConnection()
+            self?.showToast(message: "Error occured, try reconnecting...", type: .error)
+            self?.retryConnection()
         }
         
-        socket?.on(clientEvent: .statusChange) { data, ack in
+        socket?.on(clientEvent: .statusChange) { [weak self] data, ack in
             print("Status changed: \(data)")
+            switch self?.socket?.status {
+            case .connecting:
+                self?.showToast(message: "Connecting...", type: .processing)
+            case .connected:
+                self?.showToast(message: "Socket onnected.", type: .success)
+            case .disconnected:
+                self?.showToast(message: "Socket disconnected.", type: .error)
+            case .notConnected:
+                self?.showToast(message: "Not connected", type: .normal)
+            default:
+                break
+            }
         }
         
         socket?.on(clientEvent: .ping) { data, ack in
@@ -128,5 +142,40 @@ class WebSocketHelper {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.socket?.connect()
         }
+    }
+}
+
+
+extension WebSocketHelper {
+    
+    enum ToastType {
+        case normal
+        case error
+        case processing
+        case success
+        
+        var backgroundColor: UIColor {
+            switch self {
+            case .error:       return .red
+            case .success:     return .green
+            case .normal:      return .gray
+            case .processing: return .link
+            }
+        }
+    }
+    
+    func showToast(message: String, type: ToastType) {
+        var style = ToastStyle()
+        style.messageColor = .black
+        style.messageFont = .systemFont(ofSize: 14)
+        style.messageAlignment = .center
+        style.backgroundColor = type.backgroundColor
+        style.cornerRadius = 23
+        style.verticalPadding = 15
+        style.horizontalPadding = 16
+        style.displayShadow = false
+
+        let window = UIApplication.window
+        window?.makeToast(message, position: .top, style: style)
     }
 }

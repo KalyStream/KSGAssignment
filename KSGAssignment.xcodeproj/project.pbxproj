@@ -23,6 +23,9 @@
 		A044CDC22BF9FB77008BF989 /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A044CDC12BF9FB77008BF989 /* MainAssembly.swift */; };
 		A044CDCA2BF9FCCD008BF989 /* LiveItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A044CDC92BF9FCCD008BF989 /* LiveItemResponse.swift */; };
 		A044CDCD2BFA0EE2008BF989 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A044CDCC2BFA0EE2008BF989 /* InfoView.swift */; };
+		A044CDD02BFA2325008BF989 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = A044CDCF2BFA2325008BF989 /* Toast */; };
+		A044CDD32BFA2425008BF989 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A044CDD22BFA2425008BF989 /* Extensions.swift */; };
+		A044CDD52BFA242F008BF989 /* FeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A044CDD42BFA242F008BF989 /* FeedbackGenerator.swift */; };
 		A0CD49B32BF9BF03001CBD55 /* LiveItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CD49B22BF9BF03001CBD55 /* LiveItemCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +47,8 @@
 		A044CDC12BF9FB77008BF989 /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		A044CDC92BF9FCCD008BF989 /* LiveItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveItemResponse.swift; sourceTree = "<group>"; };
 		A044CDCC2BFA0EE2008BF989 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		A044CDD22BFA2425008BF989 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A044CDD42BFA242F008BF989 /* FeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackGenerator.swift; sourceTree = "<group>"; };
 		A0CD49B22BF9BF03001CBD55 /* LiveItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A044CDD02BFA2325008BF989 /* Toast in Frameworks */,
 				A0303BD42BF8DAF30044FCF3 /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +84,7 @@
 		A0303BBA2BF8DA3C0044FCF3 /* KSGAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				A044CDD12BFA2415008BF989 /* Utilities */,
 				A044CDC62BF9FBD6008BF989 /* Resources */,
 				A044CDC52BF9FBA6008BF989 /* Helpers */,
 				A044CDC42BF9FB8E008BF989 /* Flows */,
@@ -243,6 +250,15 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
+		A044CDD12BFA2415008BF989 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A044CDD22BFA2425008BF989 /* Extensions.swift */,
+				A044CDD42BFA242F008BF989 /* FeedbackGenerator.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -261,6 +277,7 @@
 			name = KSGAssignment;
 			packageProductDependencies = (
 				A0303BD32BF8DAF30044FCF3 /* SocketIO */,
+				A044CDCF2BFA2325008BF989 /* Toast */,
 			);
 			productName = KSGAssignment;
 			productReference = A0303BB82BF8DA3C0044FCF3 /* KSGAssignment.app */;
@@ -292,6 +309,7 @@
 			mainGroup = A0303BAF2BF8DA3C0044FCF3;
 			packageReferences = (
 				A0303BD22BF8DAF30044FCF3 /* XCRemoteSwiftPackageReference "socket" */,
+				A044CDCE2BFA2325008BF989 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = A0303BB92BF8DA3C0044FCF3 /* Products */;
 			projectDirPath = "";
@@ -329,9 +347,11 @@
 				A0303BBC2BF8DA3C0044FCF3 /* AppDelegate.swift in Sources */,
 				A044CDB82BF9FB2C008BF989 /* LiveItemViewModel.swift in Sources */,
 				A044CDBE2BF9FB66008BF989 /* MainPresenter.swift in Sources */,
+				A044CDD32BFA2425008BF989 /* Extensions.swift in Sources */,
 				A0303BD12BF8DA5E0044FCF3 /* WebSocketHelper.swift in Sources */,
 				A044CDB22BF9FAF6008BF989 /* LiveRouter.swift in Sources */,
 				A044CDCD2BFA0EE2008BF989 /* InfoView.swift in Sources */,
+				A044CDD52BFA242F008BF989 /* FeedbackGenerator.swift in Sources */,
 				A044CDC22BF9FB77008BF989 /* MainAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,6 +575,14 @@
 				kind = branch;
 			};
 		};
+		A044CDCE2BFA2325008BF989 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -562,6 +590,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A0303BD22BF8DAF30044FCF3 /* XCRemoteSwiftPackageReference "socket" */;
 			productName = SocketIO;
+		};
+		A044CDCF2BFA2325008BF989 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A044CDCE2BFA2325008BF989 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

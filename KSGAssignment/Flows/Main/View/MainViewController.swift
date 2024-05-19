@@ -58,6 +58,7 @@ public final class MainViewController: UIViewController {
     }
     
     @objc private func openLiveModule() {
+        Vibration.selection.vibrate()
         presenter?.presentLive()
     }
 }

@@ -93,6 +93,7 @@ final class LiveItemCell: UITableViewCell {
     }
     
     private func setupViews() {
+        contentView.backgroundColor = .white
         contentView.addSubview(containerView)
         containerView.addSubview(iconImageView)
         containerView.addSubview(nameLabel)

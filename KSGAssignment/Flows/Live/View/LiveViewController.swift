@@ -108,6 +108,7 @@ class LiveViewController: UIViewController, UITableViewDelegate {
     }
 
     @objc func connectButtonTapped() {
+        Vibration.selection.vibrate()
         guard let status = WebSocketHelper.shared.getStatus() else { return }
         switch status {
         case .connected, .connecting:
